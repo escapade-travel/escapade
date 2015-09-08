@@ -3,30 +3,47 @@
 
 <dom-module id="coming-soon">
     <style>
-        .coming-soon{
-            text-align: center;
-            padding: 50px 40px;
-            background-color:
+        #home{
+            background: url(../assets/images/cover.jpg);
         }
     </style>
 
     <template>
-
-        <nav-element></nav-element>
-        <section class="pfblock">
-            <div class="container">
-                <div class="row">
-                    <h1>Coming soon</h1>
-                </div>
+        <section id="home" class="pfblock-image screen-height">
+            <div class="home-overlay"></div>
+            <div class="intro">
+                <h1>Coming soon</h1>
+                <div><a href="/#home">Back</a></div>
             </div>
-            <footer-element></footer-element>
-    </template> <script>
-    Polymer({
-        is : 'coming-soon',
-        properties: {
-        },
-        attached : function() {
-        }
-    });
-</script>
+
+        </section>
+    </template>
+    <script>
+        Polymer({
+            is : 'coming-soon',
+            properties: {
+            },
+            attached : function() {
+
+                /* ---------------------------------------------- /*
+                 * Home BG
+                 /* ---------------------------------------------- */
+
+                $(".screen-height").height($(window).height());
+
+                $(window).resize(function() {
+                    $(".screen-height").height($(window).height());
+                });
+
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i
+                        .test(navigator.userAgent)) {
+                    $('#home').css({
+                        'background-attachment' : 'scroll'
+                    });
+                } else {
+                    $('#home').parallax('50%', 0.1);
+                }
+            }
+        });
+    </script>
 </dom-module>
