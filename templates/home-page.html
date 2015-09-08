@@ -1,13 +1,19 @@
-<link rel="import" href="elements/nav.html">
-<link rel="import" href="elements/themes.html">
-<link rel="import" href="elements/contact.html">
-<link rel="import" href="elements/footer.html">
+<link rel="import" href="../elements/nav.html">
+<link rel="import" href="../elements/themes.html">
+<link rel="import" href="../elements/contact.html">
+<link rel="import" href="../elements/footer.html">
 
 <dom-module id="home-page">
 <style>
 </style>
 
-<template> 
+<template>
+
+<!-- Preloader -->
+
+<div id="preloader">
+    <div id="status"></div>
+</div>
 
 <!-- Home start -->
 
@@ -261,6 +267,16 @@
 <contact-element></contact-element> 
 
 <footer-element></footer-element>
+
+
+<!-- Scroll to top -->
+
+<div class="scroll-up">
+    <a href="#home"><i class="fa fa-angle-up"></i></a>
+</div>
+
+<!-- Scroll to top end-->
+
 </template> <script>	
     Polymer({
         is : 'home-page',
@@ -269,13 +285,13 @@
                 type: Array,
                 value: [
                     {
-                        imageUrl: "../../assets/images/client-1.jpg",
+                        imageUrl: "../assets/images/client-1.jpg",
                         alt: "client-1",
                         author: "Pino Caruso",
                         content: "Work with John was a pleasure. He understood exactly what I wanted and created an awesome site for my company."
                     },
                     {
-                        imageUrl: "../../assets/images/client-2.jpg",
+                        imageUrl: "../assets/images/client-2.jpg",
                         alt: "client-2",
                         author: "Jane Doe",
                         content: "I'm really happy with the results. Get 100% satisfaction is difficult but Alex got it without problems."
