@@ -9,7 +9,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "http-server -p 80",
+    "start": "http-server -p $PORT",
     "test": "http-server -p 8080"
   },
   "repository": {
