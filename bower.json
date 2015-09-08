@@ -1,0 +1,23 @@
+{
+  "name": "escapade",
+  "version": "0.0.0",
+  "authors": [
+    "Haoli Qu <haoli.qu@arm.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "app-router": "~2.6.1",
+    "bootstrap": "~3.3.5",
+    "components-font-awesome": "~4.4.0",
+    "iron-ajax": "PolymerElements/iron-ajax#~1.0.4",
+    "jquery": "~2.1.4",
+    "polymer": "Polymer/polymer#^1.0.0"
+  }
+}

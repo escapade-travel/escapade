@@ -1,0 +1,116 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<dom-module id="theme-element">
+
+<style>
+</style>
+<template>
+
+<!-- Themes start -->
+
+<section id="themes" class="pfblock">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-sm-6 col-sm-offset-3">
+
+				<div class="pfblock-header wow fadeInUp">
+					<h2 class="pfblock-title">Why the UK</h2>
+					<div class="pfblock-line"></div>
+					<div class="pfblock-subtitle">No one lights a lamp in order
+						to hide it behind the door: the purpose of light is to create more
+						light, to open people’s eyes, to reveal the marvels around.</div>
+				</div>
+
+			</div>
+
+		</div>
+		<!-- .row -->
+		<div class="row">
+		<template is="dom-repeat" items="{{images}}">
+			<div class="col-xs-12 col-sm-4 col-md-4">
+
+				<div class="grid wow zoomIn">
+					<figure class="effect-bubba">
+						<img
+							src="{{item.imageUrl}}"
+							alt="{{item.alt}}" />
+						<figcaption>
+							<h2>
+								<span>{{item.titlemain}}</span>
+								<span><strong>{{item.titlespan}}</strong></span>
+							</h2>
+							<p>{{item.content}}</p>
+						</figcaption>
+					</figure>
+				</div>
+
+			</div>
+		</template>
+		</div>
+	</div>
+	<!-- .contaier -->
+
+</section>
+
+<!-- Themes end --> 
+</template> 
+<script>
+    Polymer({
+        is : 'theme-element',
+		properties: {
+			images: {
+				type: Array,
+				value: [
+					{
+						imageUrl: "../../assets/images/item-7.jpg",
+						alt: "img07",
+						titlemain: "Crazy",
+						titlespan: "Shark",
+						content: "Lily likes to play with crayons and pencils"
+					},
+					{
+						imageUrl: "../../assets/images/item-8.jpg",
+						alt: "img08",
+						titlemain: "Funny",
+						titlespan: "Tortoise",
+						content: "Lily likes to play with crayons and pencils"
+					},
+					{
+						imageUrl: "../../assets/images/item-9.jpg",
+						alt: "img09",
+						titlemain: "The",
+						titlespan: "Hat",
+						content: "Lily likes to play with crayons and pencils"
+					},
+					{
+						imageUrl: "../../assets/images/item-4.jpg",
+						alt: "img04",
+						titlemain: "Bang",
+						titlespan: "Bang",
+						content: "Lily likes to play with crayons and pencils"
+					},
+					{
+						imageUrl: "../../assets/images/item-5.jpg",
+						alt: "img05",
+						titlemain: "Crypton",
+						titlespan: "Dude",
+						content: "Lily likes to play with crayons and pencils"
+					},
+					{
+						imageUrl: "../../assets/images/item-6.jpg",
+						alt: "img06",
+						titlemain: "Don't",
+						titlespan: "Poke",
+						content: "Lily likes to play with crayons and pencils"
+					}
+				]
+			}
+		},
+        ready : function() {
+        },
+        attached : function() {
+        }
+    });
+</script> 
+</dom-module>
+
