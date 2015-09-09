@@ -1,7 +1,8 @@
-<link rel="import" href="../elements/nav.html">
-<link rel="import" href="../elements/themes.html">
-<link rel="import" href="../elements/contact.html">
-<link rel="import" href="../elements/footer.html">
+<link rel="import" href="oneimage.html">
+<link rel="import" href="nav.html">
+<link rel="import" href="themes.html">
+<link rel="import" href="contact.html">
+<link rel="import" href="footer.html">
 
 <dom-module id="home-page">
 <style>
@@ -16,9 +17,7 @@
 </div>
 
 <!-- Home start -->
-
-<section id="home" class="pfblock-image screen-height">
-	<div class="home-overlay"></div>
+<one-image-element>
 	<div class="intro">
 		<h1>一個真正的旅行家必是一個流浪者</h1>
 		<div class="start">經歷著流浪者的快樂、誘惑，和探險意念。旅行必須流浪式，否則便不成其為旅行。</div>
@@ -31,8 +30,7 @@
 			</span>
 		</div>
 	</a>
-
-</section>
+</one-image-element>
 
 <!-- Home end -->
 
@@ -368,25 +366,6 @@
                 $('#cbp-qtrotator').cbpQTRotator();
 
             });
-
-            /* ---------------------------------------------- /*
-             * Home BG
-            /* ---------------------------------------------- */
-
-            $(".screen-height").height($(window).height());
-
-            $(window).resize(function() {
-                $(".screen-height").height($(window).height());
-            });
-
-            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i
-                    .test(navigator.userAgent)) {
-                $('#home').css({
-                    'background-attachment' : 'scroll'
-                });
-            } else {
-                $('#home').parallax('50%', 0.1);
-            }
 
             /* ---------------------------------------------- /*
              * WOW Animation When You Scroll
