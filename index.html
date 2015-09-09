@@ -9,9 +9,9 @@
 
     <title>Escapade | 浪客</title>
 
-    <!-- CSS -->
+    <!-- CSS 
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css"
-          rel="stylesheet" media="screen">
+          rel="stylesheet" media="screen">-->
     <link
             href="bower_components/components-font-awesome/css/font-awesome.min.css"
             rel="stylesheet" media="screen">
@@ -20,12 +20,14 @@
     <link href="assets/css/animate.css" rel="stylesheet">
 
     <!-- Custom styles CSS -->
+    <link href="assets/css/custom.css" rel="stylesheet" media="screen">
     <link href="assets/css/style.css" rel="stylesheet" media="screen">
 
     <!-- Polymer Components -->
     <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
 
     <link rel="import" href="bower_components/polymer/polymer.html">
+    <link rel="import" href="bower_components/iron-ajax/iron-ajax.html">
     <link rel="import" href="bower_components/app-router/app-router.html">
 
     <script src="assets/js/modernizr.custom.js"></script>
@@ -37,6 +39,8 @@
     <!-- matches an exact path -->
     <app-route path="/" import="/elements/home-page.html"></app-route>
     <app-route path="/coming-soon" import="/elements/coming-soon-page.html"></app-route>
+    <!-- matches using a path variable -->
+    <app-route path="/themes/:pageId" import="/elements/theme-page.html"></app-route>
 </app-router>
 
 <!-- Javascript files -->

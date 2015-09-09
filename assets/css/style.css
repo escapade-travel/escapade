@@ -30,8 +30,22 @@ a:hover {
 
 /* ---------------------------------------------- /*
  * Transition elsements
-/* ---------------------------------------------- */
+/* ---------------------------------------------- 
 
+
+.btn-primary {
+	background-color: #e7746f;
+	color: #fff !important;
+}
+
+.btn-primary:hover{
+	background-color: #fff;
+}
+
+a.btn-primary:hover {
+	color: #e7746f !important;
+}
+*/
 
 .navbar a,
 .form-control {

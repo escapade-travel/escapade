@@ -1,0 +1,84 @@
+<link rel="import" href="oneimage.html">
+<link rel="import" href="nav.html">
+<link rel="import" href="contact.html">
+<link rel="import" href="footer.html">
+
+<dom-module id="theme-page">
+<style>
+  img{
+	width: 100%;
+  }
+  .row{
+	margin-bottom: 15px;
+  }
+</style>
+
+    <template>
+		<iron-ajax id="get_data"
+			auto
+			handle-as="json"
+			method="GET"
+			on-response="handleResponse"
+			on-error="handleErrorResponse"
+			debounce-duration="300"></iron-ajax>
+
+<nav-element></nav-element>
+
+<section id="themes" class="pfblock pfblock-gray">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-sm-6 col-sm-offset-3">
+
+				<div class="pfblock-header wow fadeInUp">
+					<h1 class="pfblock-title">{{page.title}}</h1>
+					<div class="pfblock-line"></div>
+					<div class="pfblock-subtitle">{{page.content}}</div>
+					
+				</div>
+
+			</div>
+		</div>
+		
+		<template is="dom-repeat" items="{{page.images}}">
+		<div class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+				<img src="{{item.imageUrl}}">
+			</div>
+		</div>
+		</template>
+		<div class="row text-center">
+			<a class="btn btn-primary" href="/#/themes/id2">Next</a>
+		</div>
+	</div>
+</section>	
+
+<!-- <contact-element></contact-element> -->
+
+<footer-element></footer-element>
+</template>
+    <script>
+        Polymer({
+            is: 'theme-page',
+            properties: {
+                pageId: {
+					type: String,
+					value: ""
+				}
+            },
+			handleResponse: function(data){
+				this.page = data.detail.response;
+			},
+			handleErrorResponse: function(err){
+				document.querySelector('app-router').go('/coming-soon');
+			},
+			attached: function(){
+				this.$.get_data.url = "http://testbackend.elasticbeanstalk.com/v1/modules/" + this.pageId;
+				this.$.get_data.generateRequest();
+			},
+            ready: function(){
+            }
+        });
+    </script>
+
+</dom-module>
