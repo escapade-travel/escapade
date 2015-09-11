@@ -15,6 +15,7 @@
   "dependencies": {
     "app-router": "~2.6.1",
     "bootstrap": "~3.3.5",
+    "bootstrap-datepicker": "~1.4.0",
     "components-font-awesome": "~4.4.0",
     "iron-ajax": "PolymerElements/iron-ajax#~1.0.4",
     "jquery": "~2.1.4",
