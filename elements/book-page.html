@@ -1,0 +1,178 @@
+<link rel="import" href="oneimage.html">
+<link rel="import" href="nav.html">
+<link rel="import" href="contact.html">
+<link rel="import" href="footer.html">
+
+<dom-module id="book-page">
+<style>
+  img{
+	width: 100%;
+  }
+  .row{
+	margin-bottom: 15px;
+  }
+  .theme a{
+	margin: 5px;
+  }
+  
+  .other-notes textarea{
+	width: 100%;
+  }
+  
+  .price-value {
+	margin-top: 15px;
+  }
+  
+</style>
+
+    <template>
+<nav-element></nav-element>
+
+<section id="detail" class="pfblock pfblock-gray">
+	<div class="container text-center">
+		<div class="row">
+
+			<div class="col-sm-10 col-sm-offset-1">
+				<div class="pfblock-header wow fadeInUp">
+					<h1 class="pfblock-title">让我们更了解你</h1>
+					<div class="pfblock-line"></div>					
+				</div>
+			</div>
+		</div>
+		<div id="theme-selection" class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+				<div class="pfblock-header wow fadeInUp">
+					<div class="pfblock-subtitle">英国最吸引你的是什么？</div>
+					<div class="pfblock-line"></div>
+					<div class="theme">
+					<template is="dom-repeat" items="{{themes}}">
+						<a href="#" class="btn btn-primary">{{item.name}}</a>
+					</template>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="date-selection" class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+				<div class="pfblock-header wow fadeInUp">
+					<div class="pfblock-subtitle">确定出行日期了吗？</div>
+					<div class="pfblock-line"></div>
+					<div class="">
+						<a href="#" class="btn btn-primary">YES</a>
+						<a href="#" class="btn btn-default">NOT YET</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="calendar" class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+				<div class="pfblock-header wow fadeInUp">
+					<div class="pfblock-subtitle">选择起始日期</div>
+					<div class="pfblock-line"></div>
+					<div class="">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="city-selection" class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+				<div class="pfblock-header wow fadeInUp">
+					<div class="pfblock-subtitle">确定想去的城市了吗？</div>
+					<div class="pfblock-line"></div>
+					<div class="">
+						<a href="#" class="btn btn-primary">YES</a>
+						<a href="#" class="btn btn-default">NEED ADVICE</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="map" class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+				<div class="pfblock-header wow fadeInUp">
+					<div class="pfblock-subtitle">点击选择城市</div>
+					<div class="pfblock-line"></div>
+					<div class="">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="price-range" class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+				<div class="pfblock-header wow fadeInUp">
+					<div class="pfblock-subtitle">旅行费用预算（英镑/天)</div>
+					<div class="pfblock-line"></div>
+					<div id="price-slider"></div>
+					<div class="price-value">
+						&#163;<span id="slider-snap-value-lower"></span> - 
+						&#163;<span id="slider-snap-value-upper"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="other-notes" class="row">
+			<div class="col-sm-10 col-sm-offset-1">
+				<div class="pfblock-header wow fadeInUp">
+					<div class="pfblock-subtitle">有什么其他要求吗？</div>
+					<div class="pfblock-line"></div>
+					<div class="other-notes">
+						<textarea class="form-control" placeholder="有什么其他要求" rows="7"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<a class="btn btn-primary" href="/#/themes/id2">Next</a>
+		</div>
+	</div>
+</section>	
+
+<!-- <contact-element></contact-element> -->
+
+<footer-element></footer-element>
+	
+</template>
+    <script>
+        Polymer({
+            is: 'book-page',
+            properties: {
+				themes: {
+					type: Array,
+					value: [
+						{name: "历史"}, 
+						{name: "文学"}, 
+						{name: "流行音乐"}, 
+						{name: "体育"}, 
+						{name: "皇室"}, 
+						{name: "风景"}, 
+						{name: "英剧"}
+					]
+				}
+            },
+			attached: function(){
+				var snapSlider = document.getElementById('price-slider');
+
+				noUiSlider.create(snapSlider, {
+					start: [ 200, 500 ],
+					connect: true,
+					range: {
+						'min': [ 0 ],
+						'max': [ 1000 ]
+					}
+				});
+				
+				var snapValues = [
+					document.getElementById('slider-snap-value-lower'),
+					document.getElementById('slider-snap-value-upper')
+				];
+
+				snapSlider.noUiSlider.on('update', function( values, handle ) {
+					snapValues[handle].innerHTML = values[handle];
+				});
+			},
+            ready: function(){
+            }
+        });
+    </script>
+
+</dom-module>
