@@ -695,6 +695,21 @@ textarea.form-control {
 
 }
 
+@media (max-width: 360px) {
+
+    h1 {
+        font-size: 24px;
+        letter-spacing: 2px;
+    }
+
+    h2 {
+        font-size: 16px;
+        margin: 0 0 15px;
+        letter-spacing: 2px;
+    }
+
+}
+
 
 /*--------------------------------*/
 /***** Portfolio Common style *****/
