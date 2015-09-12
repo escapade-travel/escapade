@@ -8,15 +8,11 @@
         margin-bottom: 15px;
         margin-top: 15px;
     }
-    .theme span{
+    .theme span, .map-image span{
         margin: 5px;
     }
     .price-value {
         margin-top: 15px;
-    }
-    .map-image{
-        overflow: hidden;
-        margin-bottom: 10px;
     }
     .input-group{
         width: 100%;
@@ -59,6 +55,8 @@
                     <div class="pfblock-line"></div>
                         <span href="#theme-selection" class="btn btn-primary" on-click="goNext"
                               data-current="detail" data-next="theme-selection">开始</span>
+                        <span href="#summary" class="btn btn-info" on-click="goNext"
+                              data-current="detail" data-next="summary">Quick Form (Test)</span>
                 </div>
             </div>
         </div>
@@ -73,7 +71,7 @@
                     <div class="pfblock-line"></div>
                     <div class="theme">
                         <template is="dom-repeat" items="{{themes}}">
-                            <span class="btn btn-primary">{{item.name}}</span>
+                            <span on-click="toggleSelection" data-id="selectedThemes" class="btn btn-primary">{{item.name}}</span>
                         </template>
                     </div>
                 </div>
@@ -108,10 +106,10 @@
                         <div class="pfblock-line"></div>
                         <div class="date-picker input-daterange">
                             <div class="col-xs-6">
-                                <input class="form-control" type="date" name="date" id="start-date" />
+                                <input value="{{startDate::input}}" class="form-control" type="date" name="date" id="start-date" />
                             </div>
                             <div class="col-xs-6">
-                                <input class="form-control" type="date" name="date" id="end-date" />
+                                <input value="{{endDate::input}}" class="form-control" type="date" name="date" id="end-date" />
                             </div>
                         </div>
 
@@ -142,12 +140,15 @@
                                   data-current="city-selection" data-next="price-range">NOT YET</span>
                     </div>
 
-
                     <div id="map" class="pfblock-header wow fadeInUp" style="display:none">
                         <div class="pfblock-line"></div>
                         <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
                             <div class="map-image">
-                                <img src="http://www.map-of-uk.com/uk-map-720.jpg">
+                                <h4>Map coming soon... Choose from the list for now.</h4>
+
+                                <template is="dom-repeat" items="{{cities}}">
+                                    <span on-click="toggleSelection" data-id="selectedCities" class="btn btn-info">{{item.name}}</span>
+                                </template>
                             </div>
                         </div>
 
@@ -170,10 +171,14 @@
                 <div class="pfblock-header wow fadeInUp">
                     <div class="pfblock-subtitle">旅行费用预算（英镑/天)</div>
                     <div class="pfblock-line"></div>
-                    <div id="price-slider"></div>
                     <div class="price-value">
-                        &#163;<span id="slider-snap-value-lower"></span> -
-                        &#163;<span id="slider-snap-value-upper"></span>
+
+                        <div class="col-xs-6">
+                            <input class="form-control" type="number" value="{{minBudget::input}}"></input>
+                        </div>
+                        <div class="col-xs-6">
+                            <input class="form-control" type="number" value="{{maxBudget::input}}"></input>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -195,7 +200,7 @@
                     <div class="pfblock-subtitle">有什么其他要求吗？</div>
                     <div class="pfblock-line"></div>
                     <div class="other-notes">
-                        <textarea class="form-control" placeholder="有什么其他要求" rows="7"></textarea>
+                        <textarea value="{{otherNotes::input}}" class="form-control" placeholder="有什么其他要求" rows="7"></textarea>
                     </div>
                 </div>
             </div>
@@ -218,30 +223,32 @@
                     <div class="pfblock-line"></div>
                     <div class="summary">
                         <div class="panel panel-default">
-                            <!-- Default panel contents -->
-                            <div class="panel-heading">Summary</div>
 
                             <!-- Table -->
-                            <table class="table text-left">
+                            <table class="table table-hover text-left">
                                 <tr>
                                     <td>Themes</td>
-                                    <td>Movies, Music, Sports</td>
+                                    <td id="selectedThemes"></td>
                                 </tr>
                                 <tr>
-                                    <td>Departure dates</td>
-                                    <td>2015-10-10 TO 2015-10-20</td>
+                                    <td>Departure date</td>
+                                    <td><span>{{startDate}}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>End date</td>
+                                    <td><span>{{endDate}}</span></td>
                                 </tr>
                                 <tr>
                                     <td>Cities</td>
-                                    <td>Not Decided</td>
+                                    <td id="selectedCities"></td>
                                 </tr>
                                 <tr>
                                     <td>Budget</td>
-                                    <td>&#163;100 - &#163;200 per day</td>
+                                    <td><span>{{minBudget}}</span> to <span>{{maxBudget}}</span> per day</td>
                                 </tr>
                                 <tr>
                                     <td>Other notes</td>
-                                    <td>Nothing</td>
+                                    <td>{{otherNotes}}</td>
                                 </tr>
                             </table>
                         </div>
@@ -312,15 +319,127 @@
         properties: {
             themes: {
                 type: Array,
+                notify: true,
                 value: [
-                    {name: "历史"},
-                    {name: "文学"},
-                    {name: "流行音乐"},
-                    {name: "体育"},
-                    {name: "皇室"},
-                    {name: "风景"},
-                    {name: "英剧"}
+                    {
+                        name: "历史",
+                        selected: false
+                    },
+                    {
+                        name: "文学",
+                        selected: false
+                    },
+                    {
+                        name: "流行音乐",
+                        selected: false
+                    },
+                    {
+                        name: "体育",
+                        selected: false
+                    },
+                    {
+                        name: "皇室",
+                        selected: false
+                    },
+                    {
+                        name: "风景",
+                        selected: false
+                    },
+                    {
+                        name: "英剧",
+                        selected: false
+                    }
                 ]
+            },
+            cities: {
+                type: Array,
+                notify: true,
+                value: [
+                    {
+                        name: "London",
+                        selected: false
+                    },
+                    {
+                        name: "Cambridge",
+                        selected: false
+                    },
+                    {
+                        name: "Oxford",
+                        selected: false
+                    },
+                    {
+                        name: "Bath",
+                        selected: false
+                    },
+                    {
+                        name: "York",
+                        selected: false
+                    },
+                    {
+                        name: "Manchester",
+                        selected: false
+                    },
+                    {
+                        name: "Edinburgh",
+                        selected: false
+                    }
+                ]
+            },
+            startDate:{
+                type: String,
+                notify: true,
+                value: "Not decided"
+            },
+            endDate:{
+                type: String,
+                notify: true,
+                value: "Not decided"
+            },
+            minBudget: {
+                type: Number,
+                notify: true,
+                value: 100
+            },
+            maxBudget: {
+                type: Number,
+                notify: true,
+                value: 200
+            },
+            otherNotes:{
+                type: String,
+                notify: true
+            }
+        },
+        toggleSelection: function(e, detail){
+            var item = e.model.item;
+            var id = e.target.getAttribute('data-id');
+
+            if(item.selected) {
+                item.selected = false;
+                e.target.classList.remove('active');
+                e.target.classList.remove('btn-default');
+                if(id == "selectedThemes"){
+                    e.target.classList.add('btn-primary');
+                } else if(id == "selectedCities") {
+                    e.target.classList.add('btn-info');
+                }
+            } else {
+                item.selected = true;
+                e.target.classList.add('active');
+                e.target.classList.add('btn-default');
+                if(id == "selectedThemes"){
+                    e.target.classList.remove('btn-primary');
+                } else if(id == "selectedCities") {
+                    e.target.classList.remove('btn-info');
+                }
+            }
+
+            if(id == "selectedThemes"){
+                this.selectedItems(this.themes, id);
+            }
+
+            if(id == "selectedCities"){
+                this.selectedItems(this.cities, id);
             }
         },
         goNext: function(e, detail){
@@ -333,6 +452,17 @@
                 document.getElementById(current_id).style.display = "none";
             }
         },
+        selectedItems: function(arr, id){
+            var selected = "";
+
+            for(var i=0; i<arr.length; i++){
+                if(arr[i].selected){
+                    selected += arr[i].name + " ";
+                }
+            }
+
+            this.$[id].innerHTML = selected;
+        },
         ready: function(){
         },
         attached: function(){
@@ -340,6 +470,7 @@
             $('#preloader').delay(300).fadeOut('slow');
 
             /*Initialize price range slider*/
+            /*
             var snapSlider = document.getElementById('price-slider');
 
             noUiSlider.create(snapSlider, {
@@ -358,7 +489,14 @@
 
             snapSlider.noUiSlider.on('update', function( values, handle ) {
                 snapValues[handle].innerHTML = values[handle];
+                this.minBudget = values[0];
+                this.maxBudget = values[1];
+
+                console.log(this.minBudget);
+                console.log(values[0]);
+                console.log(values);
             });
+            */
 
             if (!Modernizr.inputtypes.date) {
                 // no native support for <input type="date"> :(
