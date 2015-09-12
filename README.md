@@ -11,6 +11,6 @@ Website for Escapade
 >bower install
 
 4. start http server (it's convenient to use python in Mac)
->python -m SimpleHTTPServer 8888
+>python -m SimpleHTTPServer <Port Number>
 
-5. open http://localhost:8888
+5. open http://localhost:<Port Number>
