@@ -41,6 +41,13 @@
 </style>
 
 <template>
+
+<!-- Preloader -->
+
+<div id="preloader">
+    <div id="status"></div>
+</div>
+
 <nav-element></nav-element>
 
 <section id="detail" class="pfblock pfblock-gray screen-height">
@@ -99,7 +106,7 @@
                         <div class="pfblock-line"></div>
                         <div class="pfblock-subtitle">选择起止时间</div>
                         <div class="pfblock-line"></div>
-                        <div class="date-picker">
+                        <div class="date-picker input-daterange">
                             <div class="col-xs-6">
                                 <input class="form-control" type="date" name="date" id="start-date" />
                             </div>
@@ -329,6 +336,9 @@
         ready: function(){
         },
         attached: function(){
+            $('#status').fadeOut();
+            $('#preloader').delay(300).fadeOut('slow');
+
             /*Initialize price range slider*/
             var snapSlider = document.getElementById('price-slider');
 
@@ -350,8 +360,11 @@
                 snapValues[handle].innerHTML = values[handle];
             });
 
-            /*Initialize datepicker*/
-            //$('#calendar .input-daterange').datepicker({});
+            if (!Modernizr.inputtypes.date) {
+                // no native support for <input type="date"> :(
+                /*Initialize datepicker*/
+                $('#calendar .input-daterange').datepicker({});
+            }
 
             /* ---------------------------------------------- /*
              * Smooth scroll / Scroll To Top
