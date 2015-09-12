@@ -16,9 +16,15 @@
     }
     .map-image{
         overflow: hidden;
+        margin-bottom: 10px;
     }
     .input-group{
         width: 100%;
+        margin-bottom: 5px;
+    }
+    .date-picker{
+        overflow: hidden;
+        margin-bottom: 10px;
     }
 
 </style>
@@ -73,35 +79,32 @@
                     <div class="pfblock-line"></div>
                     <div class="">
                             <span href="#calendar" class="btn btn-primary" on-click="goNext"
-                                  data-current="date-selection" data-next="calendar">YES</span>
+                                  data-current="" data-next="calendar">YES</span>
                             <span href="#city-selection" class="btn btn-default" on-click="goNext"
                                   data-current="date-selection"  data-next="city-selection">NOT YET</span>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section id="calendar" class="pfblock pfblock-gray screen-height" style="display:none">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-                <div class="pfblock-header wow fadeInUp">
-                    <div class="pfblock-subtitle">选择起始日期</div>
-                    <div class="pfblock-line"></div>
-                    <div class="input-daterange input-group" id="datepicker">
-                        <input class="form-control" type="date" name="date" id="start-date" />
-                        <span class="input-group-addon">TO</span>
-                        <input class="form-control" type="date" name="date" id="end-date" />
+
+                    <div id="calendar" class="pfblock-header wow fadeInUp" style="display:none">
+                        <div class="pfblock-line"></div>
+                        <div class="date-picker">
+
+                            <div class="col-sm-6 col-xs-12">
+                                Start Date <input class="form-control" type="date" name="date" id="start-date" />
+                            </div>
+                            <div class="col-sm-6 col-xs-12">
+                                End Date <input class="form-control" type="date" name="date" id="end-date" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+
+                        <span href="#city-selection" class="btn btn-primary" on-click="goNext"
+                              data-current="date-selection" data-next="city-selection">NEXT</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-                    <span href="#city-selection" class="btn btn-primary" on-click="goNext"
-                          data-current="calendar" data-next="city-selection">NEXT</span>
             </div>
         </div>
     </div>
@@ -115,40 +118,28 @@
                     <div class="pfblock-line"></div>
                     <div class="">
                             <span href="#map" class="btn btn-primary" on-click="goNext"
-                                  data-current="city-selection" data-next="map">YES</span>
+                                  data-current="" data-next="map">YES</span>
                             <span href="#price-range" class="btn btn-default" on-click="goNext"
                                   data-current="city-selection" data-next="price-range">NOT YET</span>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section id="map" class="pfblock screen-height" style="display:none">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="pfblock-header wow fadeInUp">
-                    <div class="pfblock-subtitle">点击选择城市</div>
-                    <div class="pfblock-line"></div>
 
 
-                    <div class="col-sm-6 col-xs-12 text-left">
-                        已选城市：
-                    </div>
-                    <div class="col-sm-6 col-xs-12">
-                        <div class="map-image">
-                            <img src="http://www.map-of-uk.com/uk-map-720.jpg">
+                    <div id="map" class="pfblock-header wow fadeInUp" style="display:none">
+                        <div class="pfblock-line"></div>
+                        <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+                            <div class="map-image">
+                                <img src="http://www.map-of-uk.com/uk-map-720.jpg">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+                    <span href="#price-range" class="btn btn-primary" on-click="goNext"
+                          data-current="city-selection" data-next="price-range">NEXT</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-                    <span href="#price-range" class="btn btn-primary" on-click="goNext"
-                          data-current="map" data-next="price-range">NEXT</span>
             </div>
         </div>
     </div>
@@ -243,43 +234,25 @@
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
                     <span class="btn btn-primary" on-click="goNext"
-                          data-current="summary" data-next="contact-name">提交</span>
+                          data-current="summary" data-next="contact-info">提交</span>
             </div>
         </div>
     </div>
 </section>
 
-<section id="contact-name" class="pfblock pfblock-gray screen-height" style="display:none">
+<section id="contact-info" class="pfblock pfblock-gray screen-height" style="display:none">
     <div class="container text-center">
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
 
                 <div class="pfblock-header wow fadeInUp">
-                    <div class="pfblock-subtitle">希望我们怎么称呼您？</div>
+                    <div class="pfblock-subtitle">您的联系方式？</div>
                     <div class="pfblock-line"></div>
+
                     <div class="input-group input-group-lg" data-wow-delay=".1s">
                         <input type="text" class="form-control" placeholder="Your Name" aria-describedby="sizing-addon1">
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-                    <span class="btn btn-primary" on-click="goNext"
-                          data-current="contact-name" data-next="contact-email">提交</span>
-            </div>
-        </div>
-    </div>
-</section>
 
-<section id="contact-email" class="pfblock pfblock-gray screen-height" style="display:none">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
-
-                <div class="pfblock-header wow fadeInUp">
-                    <div class="pfblock-subtitle">请把邮箱告诉我们吧！</div>
-                    <div class="pfblock-line"></div>
                     <div class="input-group input-group-lg" data-wow-delay=".1s">
                         <input type="email" class="form-control" placeholder="Your Email" aria-describedby="sizing-addon1">
                     </div>
@@ -289,7 +262,7 @@
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
                     <span class="btn btn-primary" on-click="goNext"
-                          data-current="contact-email" data-next="success">提交</span>
+                          data-current="contact-info" data-next="success">提交</span>
             </div>
         </div>
     </div>
@@ -334,8 +307,12 @@
         goNext: function(e, detail){
             var next_id = e.target.getAttribute('data-next');
             var current_id = e.target.getAttribute('data-current');
-            document.getElementById(next_id).style.display = "block";
-            document.getElementById(current_id).style.display = "none";
+            if(next_id){
+                document.getElementById(next_id).style.display = "block";
+            }
+            if(current_id){
+                document.getElementById(current_id).style.display = "none";
+            }
         },
         ready: function(){
         },
@@ -391,6 +368,7 @@
             /* ---------------------------------------------- /*
              * Home BG
              /* ---------------------------------------------- */
+
 
             $(".screen-height").css("min-height", function(){
                 return $(window).height();
