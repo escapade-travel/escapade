@@ -27,11 +27,11 @@
 		text-align: left;
 	}
 	
-	.input-daterange .start-date {
+	.input-daterange .start-date, .min-budget {
 		padding-left: 0;
 	}
 	
-	.input-daterange .end-date {
+	.input-daterange .end-date, .max-budget {
 		padding-right: 0;
 	}
 	
@@ -90,7 +90,7 @@
 					
 <form class="form-horizontal">
   <div class="form-group">
-    <label for="themes" class="col-sm-3 control-label">主题</label>
+    <label for="themes" class="col-sm-3 control-label">旅行主题</label>
     <div class="col-sm-9">
       <input type="text" class="form-control" id="themes" placeholder="请点击选择 (Not implemented yet)">
     </div>
@@ -109,21 +109,20 @@
   </div>
   </div>
   <div class="form-group">
-    <label for="cities" class="col-sm-3 control-label">城市</label>
+    <label for="cities" class="col-sm-3 control-label">旅行城市</label>
     <div class="col-sm-9">
       <input type="text" class="form-control" id="cities" placeholder="请点击选择 (Not implemented yet)">
     </div>
   </div>
   <div class="form-group">
-    <label for="min-budget" class="col-sm-3 control-label">每日最低消费(&pound;)</label>
+    <label for="min-budget" class="col-sm-3 control-label">预算(&pound;/日)</label>
     <div class="col-sm-9">
-      <input id="min-budget" class="form-control" type="number" pattern="[0-9]*" inputmode="numeric" value="{{minBudget::input}}"></input>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="max-budget" class="col-sm-3 control-label">每日最高消费(&pound;)</label>
-    <div class="col-sm-9">
-      <input id="max-budget" class="form-control" type="number" pattern="[0-9]*" inputmode="numeric" value="{{maxBudget::input}}"></input>
+		<div class="col-xs-6 min-budget">
+		  <input id="min-budget" class="form-control" type="number" pattern="[0-9]*" inputmode="numeric" value="{{minBudget::input}}"></input>
+		</div>
+		<div class="col-xs-6 max-budget">
+		  <input id="max-budget" class="form-control" type="number" pattern="[0-9]*" inputmode="numeric" value="{{maxBudget::input}}"></input>
+		</div>
     </div>
   </div>
   <div class="form-group">
