@@ -2,8 +2,17 @@
 <link rel="import" href="contact.html">
 <link rel="import" href="footer.html">
 
-<dom-module id="book-page">
+<dom-module id="quick-form">
 <style>
+	.qfblock {
+		padding-top: 40px;
+	}
+	.form-horizontal .control-label {
+		text-align: left;
+	}
+	.input-daterange input　{
+		text-align: left;
+	}
     .row{
         margin-bottom: 15px;
         margin-top: 15px;
@@ -46,173 +55,87 @@
 
 <nav-element></nav-element>
 
-<section id="detail" class="pfblock pfblock-gray screen-height">
+<section id="detail" class="qfblock pfblock-gray screen-height">
     <div class="container text-center">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-                <div class="pfblock-header wow fadeInUp">
-                    <h1 class="pfblock-title">让我们更了解你</h1>
+			
+                    <div class="pfblock-subtitle">请填写需求</div>
                     <div class="pfblock-line"></div>
-                        <span href="#theme-selection" class="btn btn-primary" on-click="goNext"
-                              data-current="detail" data-next="theme-selection">开始</span>
-                </div>
+					
+<form class="form-horizontal">
+  <div class="form-group">
+    <label for="themes" class="col-sm-3 control-label">主题</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="themes" placeholder="请点击选择 (Not implemented yet)">
+    </div>
+  </div>
+  <div class="input-daterange">
+  <div class="form-group">
+    <label for="start-date" class="col-sm-3 control-label">出行日期</label>
+    <div class="col-sm-9">
+	  <input value="{{startDate::input}}" class="form-control" type="date" name="date" id="start-date" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="end-date" class="col-sm-3 control-label">返回日期</label>
+    <div class="col-sm-9">
+	  <input value="{{startDate::input}}" class="form-control" type="date" name="date" id="end-date" />
+    </div>
+  </div>
+  </div>
+  <div class="form-group">
+    <label for="cities" class="col-sm-3 control-label">城市</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="cities" placeholder="请点击选择 (Not implemented yet)">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="min-budget" class="col-sm-3 control-label">每日最低消费(&pound;)</label>
+    <div class="col-sm-9">
+      <input id="min-budget" class="form-control" type="number" pattern="[0-9]*" inputmode="numeric" value="{{minBudget::input}}"></input>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="max-budget" class="col-sm-3 control-label">每日最高消费(&pound;)</label>
+    <div class="col-sm-9">
+      <input id="max-budget" class="form-control" type="number" pattern="[0-9]*" inputmode="numeric" value="{{maxBudget::input}}"></input>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="other-notes" class="col-sm-3 control-label">其他要求</label>
+    <div class="col-sm-9">
+		<textarea id="other-notes" value="{{otherNotes::input}}" class="form-control" placeholder="有什么其他要求" rows="7"></textarea>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
+    <div class="col-sm-9">
+      <input type="email" value="{{email::input}}" class="form-control" id="inputEmail3" placeholder="Email">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="name" class="col-sm-3 control-label">Name</label>
+    <div class="col-sm-9">
+      <input type="text"  value="{{name::input}}"  class="form-control" id="name" placeholder="Your Name">
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-10">
+      <span class="btn btn-primary" on-click="goNext" data-current="detail" data-next="summary">Preview</span>
+    </div>
+  </div>
+</form>
             </div>
         </div>
     </div>
 </section>
-<section id="theme-selection" class="pfblock pfblock-gray screen-height" style="display:none">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-                <div class="pfblock-header wow fadeInUp">
-                    <div class="pfblock-subtitle">英国最吸引你的是什么？</div>
-                    <div class="pfblock-line"></div>
-                    <div class="theme">
-                        <template is="dom-repeat" items="{{themes}}">
-                            <span on-click="toggleSelection" data-id="selectedThemes" class="btn btn-primary">{{item.name}}</span>
-                        </template>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-                    <span href="#date-selection" class="btn btn-primary" on-click="goNext"
-                          data-current="theme-selection" data-next="date-selection">NEXT</span>
-            </div>
-        </div>
-    </div>
-</section>
-<section id="date-selection" class="pfblock pfblock-gray screen-height" style="display:none">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-                <div class="pfblock-header wow fadeInUp">
-                    <div class="pfblock-subtitle">确定出行日期了吗？</div>
-                    <div class="pfblock-line"></div>
-                    <div class="">
-                            <span href="#calendar" class="btn btn-primary" on-click="goNext"
-                                  data-current="" data-next="calendar">YES</span>
-                            <span href="#city-selection" class="btn btn-default" on-click="goNext"
-                                  data-current="date-selection"  data-next="city-selection">NOT YET</span>
-                    </div>
 
-                    <div id="calendar" class="pfblock-header wow fadeInUp" style="display:none">
-                        <div class="pfblock-line"></div>
-                        <div class="pfblock-subtitle">选择起止时间</div>
-                        <div class="pfblock-line"></div>
-                        <div class="date-picker input-daterange">
-                            <div class="col-xs-6">
-                                <input value="{{startDate::input}}" class="form-control" type="date" name="date" id="start-date" />
-                            </div>
-                            <div class="col-xs-6">
-                                <input value="{{endDate::input}}" class="form-control" type="date" name="date" id="end-date" />
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-
-                        <span href="#city-selection" class="btn btn-primary" on-click="goNext"
-                              data-current="date-selection" data-next="city-selection">NEXT</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section id="city-selection" class="pfblock pfblock-gray screen-height" style="display:none">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-                <div class="pfblock-header wow fadeInUp">
-                    <div class="pfblock-subtitle">确定想去的城市了吗？</div>
-                    <div class="pfblock-line"></div>
-                    <div class="">
-                            <span href="#map" class="btn btn-primary" on-click="goNext"
-                                  data-current="" data-next="map">YES</span>
-                            <span href="#price-range" class="btn btn-default" on-click="goNext"
-                                  data-current="city-selection" data-next="price-range">NOT YET</span>
-                    </div>
-
-                    <div id="map" class="pfblock-header wow fadeInUp" style="display:none">
-                        <div class="pfblock-line"></div>
-                        <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-                            <div class="map-image">
-                                <h4>Map coming soon... Choose from the list for now.</h4>
-
-                                <template is="dom-repeat" items="{{cities}}">
-                                    <span on-click="toggleSelection" data-id="selectedCities" class="btn btn-info">{{item.name}}</span>
-                                </template>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-                    <span href="#price-range" class="btn btn-primary" on-click="goNext"
-                          data-current="city-selection" data-next="price-range">NEXT</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section id="price-range" class="pfblock pfblock-gray screen-height" style="display:none">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-                <div class="pfblock-header wow fadeInUp">
-                    <div class="pfblock-subtitle">旅行费用预算（英镑/天)</div>
-                    <div class="pfblock-line"></div>
-                    <div class="price-value">
-
-                        <div class="col-xs-6">
-                            <input class="form-control" type="number" pattern="[0-9]*" inputmode="numeric" value="{{minBudget::input}}"></input>
-                        </div>
-                        <div class="col-xs-6">
-                            <input class="form-control" type="number" pattern="[0-9]*" inputmode="numeric" value="{{maxBudget::input}}"></input>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-                    <span href="#other-notes" class="btn btn-primary" on-click="goNext"
-                          data-current="price-range" data-next="other-notes">NEXT</span>
-            </div>
-        </div>
-    </div>
-</section>
-<section id="other-notes" class="pfblock pfblock-gray screen-height" style="display:none">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-                <div class="pfblock-header wow fadeInUp">
-                    <div class="pfblock-subtitle">有什么其他要求吗？</div>
-                    <div class="pfblock-line"></div>
-                    <div class="other-notes">
-                        <textarea value="{{otherNotes::input}}" class="form-control" placeholder="有什么其他要求" rows="7"></textarea>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-                    <span class="btn btn-primary" on-click="goNext"
-                          data-current="other-notes" data-next="summary">Preview</span>
-            </div>
-        </div>
-    </div>
-</section>
-<section id="summary" class="pfblock pfblock-gray screen-height" style="display:none">
+<section id="summary" class="qfblock pfblock-gray screen-height" style="display:none">
     <div class="container text-center">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
@@ -225,27 +148,35 @@
                             <!-- Table -->
                             <table class="table table-hover text-left">
                                 <tr>
-                                    <td>Themes</td>
+                                    <td><label>Name</label></td>
+                                    <td>{{name}}</td>
+                                </tr>
+                                <tr>
+                                    <td><label>Email</label></td>
+                                    <td>{{email}}</td>
+                                </tr>
+                                <tr>
+                                    <td><label>主题</label></td>
                                     <td id="selectedThemes"></td>
                                 </tr>
                                 <tr>
-                                    <td>Departure date</td>
+                                    <td><label>出行日期</label></td>
                                     <td><span>{{startDate}}</span></td>
                                 </tr>
                                 <tr>
-                                    <td>End date</td>
+                                    <td><label>返回日期</label></td>
                                     <td><span>{{endDate}}</span></td>
                                 </tr>
                                 <tr>
-                                    <td>Cities</td>
+                                    <td><label>城市</label></td>
                                     <td id="selectedCities"></td>
                                 </tr>
                                 <tr>
-                                    <td>Budget</td>
-                                    <td><span>{{minBudget}}</span> to <span>{{maxBudget}}</span> per day</td>
+                                    <td><label>消费预算</label></td>
+                                    <td>&pound;<span>{{minBudget}}</span> to &pound;<span>{{maxBudget}}</span> per day</td>
                                 </tr>
                                 <tr>
-                                    <td>Other notes</td>
+                                    <td><label>其他要求</label></td>
                                     <td>{{otherNotes}}</td>
                                 </tr>
                             </table>
@@ -257,36 +188,10 @@
 
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+                    <span class="btn btn-default" on-click="goNext"
+                          data-current="summary" data-next="detail">修改</span>
                     <span class="btn btn-primary" on-click="goNext"
-                          data-current="summary" data-next="contact-info">提交</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="contact-info" class="pfblock pfblock-gray screen-height" style="display:none">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
-
-                <div class="pfblock-header wow fadeInUp">
-                    <div class="pfblock-subtitle">您的联系方式？</div>
-                    <div class="pfblock-line"></div>
-
-                    <div class="input-group input-group-lg" data-wow-delay=".1s">
-                        <input type="text" class="form-control" placeholder="Your Name" aria-describedby="sizing-addon1">
-                    </div>
-
-                    <div class="input-group input-group-lg" data-wow-delay=".1s">
-                        <input type="email" class="form-control" placeholder="Your Email" aria-describedby="sizing-addon1">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-                    <span class="btn btn-primary" on-click="goNext"
-                          data-current="contact-info" data-next="success">提交</span>
+                          data-current="summary" data-next="success">提交</span>
             </div>
         </div>
     </div>
@@ -313,7 +218,7 @@
 </template>
 <script>
     Polymer({
-        is: 'book-page',
+        is: 'quick-form',
         properties: {
             themes: {
                 type: Array,
@@ -406,7 +311,15 @@
             otherNotes:{
                 type: String,
                 notify: true
-            }
+            },
+			email:{
+                type: String,
+                notify: true
+			},
+			name: {
+                type: String,
+                notify: true
+			}
         },
         toggleSelection: function(e, detail){
             var item = e.model.item;
@@ -449,6 +362,7 @@
             if(current_id){
                 document.getElementById(current_id).style.display = "none";
             }
+			
 			window.scrollTo(0,0);
         },
         selectedItems: function(arr, id){
@@ -465,6 +379,7 @@
         ready: function(){
         },
         attached: function(){
+			window.scrollTo(0,0);
             $('#status').fadeOut();
             $('#preloader').delay(300).fadeOut('slow');
 
@@ -500,7 +415,7 @@
             if (!Modernizr.inputtypes.date) {
                 // no native support for <input type="date"> :(
                 /*Initialize datepicker*/
-                $('#calendar .input-daterange').datepicker({});
+                $('.input-daterange').datepicker({});
             }
 
             /* ---------------------------------------------- /*
