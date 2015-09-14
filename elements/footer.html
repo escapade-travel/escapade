@@ -46,7 +46,12 @@
     Polymer({
         is : 'footer-element',
         ready : function() {
-        }
+        },
+		attached: function() {
+            $(".screen-height").css("min-height", function(){
+                return $(window).height();
+            });
+		}
     });
 </script> 
 </dom-module>
