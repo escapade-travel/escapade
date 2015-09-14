@@ -4,6 +4,9 @@
 
 <dom-module id="quick-form">
 <style>
+	.screen-height {
+		min-height: 100%;
+	}
 	.qfblock {
 		padding-top: 40px;
 	}
@@ -97,10 +100,10 @@
     <label for="dates" class="col-sm-3 control-label">出行日期</label>
 	<div class="col-sm-9">
 		<div class="col-xs-6 start-date">
-		  <input value="{{startDate::input}}" class="form-control" type="date" name="date" />
+		  <input value="{{startDate::input}}" class="form-control" type="date" name="start-date" />
 		</div>
 		<div class="col-xs-6 end-date">
-		  <input value="{{startDate::input}}" class="form-control" type="date" name="date" />
+		  <input value="{{endDate::input}}" class="form-control" type="date" name="end-date" />
 		</div>
 	</div>
   </div>
@@ -403,6 +406,18 @@
 			window.scrollTo(0,0);
             $('#status').fadeOut();
             $('#preloader').delay(300).fadeOut('slow');
+			
+			/*
+            $(".screen-height").css("min-height", function(){
+                return $(window).height();
+            });
+
+            $(window).resize(function() {
+                $(".screen-height").css("min-height", function(){
+					return $(window).height()
+				});
+            });
+			*/
 
             /*Initialize price range slider*/
             /*
@@ -468,15 +483,6 @@
              /* ---------------------------------------------- */
 
 
-            $(".screen-height").css("min-height", function(){
-                return $(window).height();
-            });
-
-            $(window).resize(function() {
-                $(".screen-height").css("min-height", function(){
-					return $(window).height()
-				});
-            });
 
             if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i
                     .test(navigator.userAgent)) {
