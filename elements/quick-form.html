@@ -4,15 +4,13 @@
 
 <dom-module id="quick-form">
 <style>
+	section {
+	}
 	.screen-height {
 		min-height: 100%;
 	}
 	.qfblock {
 		padding-top: 40px;
-	}
-	input.form-control {
-		height: 40px;
-		font-size: 15px;
 	}
 	
 	textarea.form-control {
@@ -80,12 +78,12 @@
 
 <nav-element></nav-element>
 
-<section id="detail" class="qfblock pfblock-gray screen-height">
+<section id="detail" class="qfblock screen-height">
     <div class="container text-center">
         <div class="row">
             <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
 			
-                    <div class="pfblock-subtitle">请填写需求</div>
+                    <div class="pfblock-subtitle">What do you need?</div>
                     <div class="pfblock-line"></div>
 					
 <form class="form-horizontal">
@@ -406,7 +404,7 @@
             $('#status').fadeOut();
             $('#preloader').delay(300).fadeOut('slow');
 			
-			/*
+			
             $(".screen-height").css("min-height", function(){
                 return $(window).height();
             });
@@ -416,7 +414,7 @@
 					return $(window).height()
 				});
             });
-			*/
+			
 
             /*Initialize price range slider*/
             /*
@@ -489,7 +487,7 @@
                     'background-attachment' : 'scroll'
                 });
             } else {
-                $('#home').parallax('50%', 0.1);
+                //$('#home').parallax('50%', 0.1);
             }
         }
     });

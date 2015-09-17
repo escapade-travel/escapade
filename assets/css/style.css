@@ -9,7 +9,7 @@
 */
 
 body {
-	font: 300 14px/1.8 'Microsoft YaHei', 'Raleway', sans-serif;
+	font: 300 14px/1.8 proxima-nova, 'Microsoft YaHei', 'Raleway', sans-serif;
 	color: #666;
 	overflow-x: hidden;
 }
@@ -160,6 +160,7 @@ h6 {
 	border: 1px solid #D8E1E4;
 	font-size: 12px;
 	padding: 0 15px;
+	height: 40px;
 }
 
 .form-control:focus{
@@ -189,7 +190,7 @@ textarea.form-control {
 /* ---------------------------------------------- */
 
 .btn {
-	font-family: Raleway, sans-serif;
+	font-family: proxima-nova, Raleway, sans-serif;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	font-size: 13px;
@@ -290,7 +291,7 @@ textarea.form-control {
 }
 
 .pfblock-subtitle {
-	font-family: Raleway, "Times New Roman", Times, sans-serif;
+	font-family: proxima-nova, Raleway, "Times New Roman", Times, sans-serif;
 	font-style: normal;
 	font-size: 18px;
 }
@@ -375,7 +376,7 @@ textarea.form-control {
 }
 
 .start {
-	font-family: Raleway, "Times New Roman", Times, sans-serif;
+	font-family: proxima-nova, Raleway, "Times New Roman", Times, sans-serif;
 	font-size: 16px;
 	font-style: normal;
 	text-transform: none;
@@ -514,7 +515,7 @@ textarea.form-control {
 	border-radius: 0;
 	margin: 0;
 	text-transform: uppercase;
-	font-family: Raleway, sans-serif;
+	font-family: proxima-nova, Raleway, sans-serif;
 }
 
 .navbar-custom,
@@ -542,7 +543,7 @@ textarea.form-control {
 .navbar-custom .navbar-brand {
 	font-weight: 700;
 	font-size: 22px;
-    font-family: "Microsoft YaHei", Lobster, cursive;
+    font-family: proxima-nova, "Microsoft YaHei", Lobster, cursive;
 }
 
 .navbar-custom .dropdown-menu {
