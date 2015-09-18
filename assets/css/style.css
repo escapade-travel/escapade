@@ -28,6 +28,11 @@ a:hover {
 	color: #999;
 }
 
+textarea, input[type="text"], input[type="number"],
+input[type="email"], input[type="date"]{
+    -webkit-appearance: none;
+}
+
 /* ---------------------------------------------- /*
  * Transition elsements
 /* ---------------------------------------------- 
