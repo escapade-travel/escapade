@@ -16,6 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="css/clean-blog.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -75,34 +76,78 @@
     <!-- Page Header -->
     <!-- Set your background image for this header on the line below. -->
     <header class="intro-header index-page">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="page-heading">
-                        <h1>Lorem ipsum</h1>
-                        <hr class="small">
-                        <span class="subheading">dolor sit amet</span>
-                    </div>
-                </div>
-            </div>
-        </div>
     </header>
 
     <!-- Main Content -->
-    <div class="container">
+    <section class="container">
         <div class="row">
+				<div class="index-heading">
+					<h2>Lorem ipsum</h2>
+				</div>
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe nostrum ullam eveniet pariatur voluptates odit, fuga atque ea nobis sit soluta odio, adipisci quas excepturi maxime quae totam ducimus consectetur?</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius praesentium recusandae illo eaque architecto error, repellendus iusto reprehenderit, doloribus, minus sunt. Numquam at quae voluptatum in officia voluptas voluptatibus, minus!</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum molestiae debitis nobis, quod sapiente qui voluptatum, placeat magni repudiandae accusantium fugit quas labore non rerum possimus, corrupti enim modi! Et.</p>
             </div>
         </div>
-    </div>
-
-    <hr>
+    </section>
+	
+	<!-- Themes slider -->
+	<section class="dark">
+	  <div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="index-heading">
+					<h2>Lorem ipsum</h2>
+				</div>
+				<div class="sliders">
+				  <div class="slide active">
+					<img class="img-responsive" src="img/item-1.jpg">
+				  </div>
+				  <div class="slide">
+					<img class="img-responsive" src="img/item-2.jpg">
+				  </div>
+				  <div class="slide">
+					<img class="img-responsive" src="img/item-3.jpg">
+				  </div>
+				  <div class="slide">
+					<img class="img-responsive" src="img/item-4.jpg">
+				  </div>
+				  <div class="slide">
+					<img class="img-responsive" src="img/item-5.jpg">
+				  </div>
+				  <a class="control btn btn-default" id="prev">Prev</a>
+				  <a class="control btn btn-default" id="next">Next</a>
+				</div>
+			</div>
+		</div>
+	  </div>
+	</section>
+	
+	<!-- Actions -->
+	
+	<section class="full-bg">
+	  <div class="container">
+		<div class="row">
+				<div class="index-heading">
+					<h2>Ready to start?</h2>
+				</div>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+				<div class="actions text-center">
+					<div class="col-sm-6">
+						<a class="btn btn-lg btn-primary">Book a Trip!</a>
+					</div>
+					<div class="col-sm-6">
+						<a class="btn btn-lg btn-default">Look Around</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	  </div>
+	</section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="dark">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
@@ -146,19 +191,29 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/clean-blog.min.js"></script>
+	<script src="js/custom.js"></script>
 	<script>
 	   (function(){
-	     var resize = function(){
-		   document.querySelector('header.index-page').style.height = window.innerHeight + 'px';
-		 };
+			var resize = function(){
+			   document.querySelector('header.index-page').style.height = window.innerHeight + 'px';
+			};
+			 
+			resize();
+			window.scrollTo(0,0);
+			 
+			window.onresize = function(){
+			   resize();
+			};
 		 
-		 resize();
-		 window.scrollTo(0,0);
-		 
-		 window.onresize = function(){
-		   resize();
-		 };
 		})();
+		
+			document.getElementById('prev').addEventListener('click', function(){
+			  Slider.prev();
+			}, false);
+			document.getElementById('next').addEventListener('click', function(){
+			  Slider.next();
+			}, false);
+		
 	</script>
 
 </body>

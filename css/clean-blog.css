@@ -1,9 +1,3 @@
-/*!
- * Clean Blog v1.0.0 (http://startbootstrap.com)
- * Copyright 2014 Start Bootstrap
- * Licensed under Apache 2.0 (https://github.com/IronSummitMedia/startbootstrap/blob/gh-pages/LICENSE)
- */
-
 body {
   font-family: 'Lora', 'Times New Roman', serif;
   font-size: 20px;
@@ -30,7 +24,7 @@ a {
 }
 a:hover,
 a:focus {
-  color: #0085a1;
+  color: #e7746f;
 }
 a img:hover,
 a img:focus {
@@ -62,29 +56,6 @@ hr.small {
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 1px;
-}
-header.index-page {
-	background: #5c97ff;
-	position: relative;
-	overflow: hidden;
-}
-header.index-page:before {
-	content: ' ';
-	position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-	opacity: 0.6;
-	background-image: url('../img/cover-2.jpg');
-	background-position: center;
-	background-repeat: no-repeat;
-	-ms-background-size: cover;
-    -o-background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    background-size: cover;
 }
 @media only screen and (min-width: 768px) {
   .navbar-custom {
@@ -137,14 +108,14 @@ header.index-page:before {
   }
   .navbar-custom.is-fixed .navbar-brand:hover,
   .navbar-custom.is-fixed .navbar-brand:focus {
-    color: #0085a1;
+    color: #e7746f;
   }
   .navbar-custom.is-fixed .nav li a {
     color: #404040;
   }
   .navbar-custom.is-fixed .nav li a:hover,
   .navbar-custom.is-fixed .nav li a:focus {
-    color: #0085a1;
+    color: #e7746f;
   }
   .navbar-custom.is-visible {
     /* if the user changes the scrolling direction, we show the header */
@@ -239,7 +210,7 @@ header.index-page:before {
 .post-preview > a:hover,
 .post-preview > a:focus {
   text-decoration: none;
-  color: #0085a1;
+  color: #e7746f;
 }
 .post-preview > a > .post-title {
   font-size: 30px;
@@ -263,7 +234,7 @@ header.index-page:before {
 }
 .post-preview > .post-meta > a:hover,
 .post-preview > .post-meta > a:focus {
-  color: #0085a1;
+  color: #e7746f;
   text-decoration: underline;
 }
 @media only screen and (min-width: 768px) {
@@ -343,7 +314,7 @@ footer .copyright {
   opacity: 1;
 }
 .floating-label-form-group-with-focus label {
-  color: #0085a1;
+  color: #e7746f;
 }
 form .row:first-child .floating-label-form-group {
   border-top: 1px solid #eeeeee;
@@ -363,8 +334,19 @@ form .row:first-child .floating-label-form-group {
 }
 .btn-default:hover,
 .btn-default:focus {
-  background-color: #0085a1;
-  border: 1px solid #0085a1;
+  background-color: #e7746f;
+  border: 1px solid #e7746f;
+  color: white;
+}
+.btn-primary {
+  background-color: #e7746f;
+  border: 1px solid #e7746f;
+  color: white;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #e25953;
+  border: 1px solid #e7746f;
   color: white;
 }
 .pager {
@@ -384,8 +366,8 @@ form .row:first-child .floating-label-form-group {
 .pager li > a:hover,
 .pager li > a:focus {
   color: white;
-  background-color: #0085a1;
-  border: 1px solid #0085a1;
+  background-color: #e7746f;
+  border: 1px solid #e7746f;
 }
 .pager .disabled > a,
 .pager .disabled > a:hover,
@@ -398,12 +380,12 @@ form .row:first-child .floating-label-form-group {
 ::-moz-selection {
   color: white;
   text-shadow: none;
-  background: #0085a1;
+  background: #e7746f;
 }
 ::selection {
   color: white;
   text-shadow: none;
-  background: #0085a1;
+  background: #e7746f;
 }
 img::selection {
   color: white;
@@ -414,5 +396,5 @@ img::-moz-selection {
   background: transparent;
 }
 body {
-  webkit-tap-highlight-color: #0085a1;
+  webkit-tap-highlight-color: #e7746f;
 }
