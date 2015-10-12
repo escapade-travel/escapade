@@ -1,6 +1,14 @@
 <dom-module id="home-page">
     <template>
 
+        <iron-ajax
+                auto
+                method="GET"
+                url="/data/articles.json"
+                handle-as="json"
+                on-response="handleResponse"
+                debounce-duration="300"></iron-ajax>
+
         <!-- Navigation -->
         <nav-element></nav-element>
 
@@ -44,7 +52,7 @@
                     </div>
                     <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
                         <!-- Slider -->
-                        <slider-element></slider-element>
+                        <slider-element data-slides="{{slides}}"></slider-element>
 
                         <div class="actions text-center">
                             <div class="">
@@ -87,6 +95,34 @@
         Polymer({
             is: "home-page",
             properties: {
+                slides: {
+                    type: Array,
+                    reflectToAttribute: true,
+                    notify: true,
+                    value: [
+                        {
+                            id: 4,
+                            image: 'https://images.unsplash.com/photo-1441742917377-57f78ee0e582?q=80&fm=jpg&s=a79e8a2beba8b3a1ad251798a9024d8b',
+                            title: '英国城堡',
+                            description: '令人瞩目的位置，丰富的历史掌故 '
+                        },
+                        {
+                            id: 5,
+                            image: 'https://images.unsplash.com/photo-1441448770220-76743f9e6af6?q=80&fm=jpg&s=38de76fbc0c63fb457e0389b50c9fc32',
+                            title: '电影中的英国',
+                            description: '英国是一处宏大而优美的电影取景地。 '
+                        },
+                        {
+                            id: 6,
+                            image: 'https://images.unsplash.com/photo-1436397543931-01c4a5162bdb?q=80&fm=jpg&s=29b3d57347ca107a06e5cfe262f24ef1',
+                            title: '莎士比亚的英格兰',
+                            description: '走近大师'
+                        }
+                    ]
+                }
+            },
+            handleResponse: function(data) {
+                this.slides = data.detail.response.result;
             },
             attached: function() {
                 document.querySelector('.index-page').style.height = window.innerHeight-60 + 'px';
