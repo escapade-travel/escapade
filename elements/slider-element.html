@@ -25,7 +25,9 @@
             is: "slider-element",
             properties: {
                 dataSlides: {
-                    type: Array
+                    type: Array,
+                    value: [],
+                    notify: true
                 }
             },
             getHref: function(id) {
@@ -36,9 +38,11 @@
                 }
             },
             attached: function() {
-                var slider = new Slider('index-slider');
-                slider.init();
-                document.querySelector('.slide').style.display = "block";
+                if(this.dataSlides.length > 0) {
+                    var slider = new Slider('index-slider');
+                    slider.init();
+                    document.querySelector('.slide').style.display = "block";
+                }
             }
         });
     </script>
