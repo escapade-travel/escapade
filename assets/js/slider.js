@@ -3,6 +3,7 @@ var Slider = function(id) {
 	var slider = document.getElementById(id);
 	var allSlides = slider.querySelectorAll('.slide');
 	var number = allSlides.length;
+    init();
 	
 	function showSlide(currentIndex) {
 		for(var i=0; i<number; i++) {
@@ -25,16 +26,13 @@ var Slider = function(id) {
 		index >= number -1 ? (index = 0) : (index += 1);
 		showSlide(index);
 	}
-	
-  
-	return {
-		init : function() {
-			var prev = slider.querySelector('.prev');
+    
+    function init() {
+        var prev = slider.querySelector('.prev');
 			var next = slider.querySelector('.next');
 			
 			prev.addEventListener('click', showPrev);
 			next.addEventListener('click', showNext);
-		}
-	}
+    }
 }
 

@@ -4,7 +4,7 @@
         <div class="sliders" id="index-slider">
             <span class="prev"></span>
             <span class="next"></span>
-            <template is="dom-repeat" items="{{dataSlides}}">
+            <template is="dom-repeat" items="{{slides}}">
                 <div class="slide card">
                     <a href$="{{getHref(item.id)}}">
                     <div class="thumbnail">
@@ -24,10 +24,8 @@
         Polymer({
             is: "slider-element",
             properties: {
-                dataSlides: {
-                    type: Array,
-                    value: [],
-                    notify: true
+                slides: {
+                    type: Array
                 }
             },
             getHref: function(id) {
@@ -38,11 +36,10 @@
                 }
             },
             attached: function() {
-                if(this.dataSlides.length > 0) {
+                this.async(function() {
                     var slider = new Slider('index-slider');
-                    slider.init();
-                    document.querySelector('.slide').style.display = "block";
-                }
+                    this.querySelector('.slide').style.display = "block";
+                });
             }
         });
     </script>

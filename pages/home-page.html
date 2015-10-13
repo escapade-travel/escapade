@@ -52,7 +52,7 @@
                     </div>
                     <div class="col-xs-10 col-xs-offset-1 col-md-8 col-md-offset-2">
                         <!-- Slider -->
-                        <div id="sliderContainer"></div>
+                        <div id="slider"></div>
                         <!-- <slider-element data-slides="{{slides}}"></slider-element> -->
 
                         <div class="actions text-center">
@@ -100,10 +100,9 @@
             handleResponse: function(data) {
                 this.slides = data.detail.response.result;
                 
-                var slideElement = document.createElement("slider-element");
-                slideElement.dataSlides = this.slides;
-                this.$.sliderContainer.appendChild(slideElement);
-                
+                var element = document.createElement("slider-element");
+                element.slides = this.slides;
+                this.$.slider.appendChild(element);
             },
             attached: function() {
                 document.querySelector('.index-page').style.height = window.innerHeight-60 + 'px';
@@ -120,9 +119,6 @@
                     //console.log(window.innerWidth);
                 };
                 window.scrollTo(0, 0);
-                
-                //this.$.getdata.url = "/data/articles.json";
-                //this.$.getdata.generateRequest();
             }
         });
 
