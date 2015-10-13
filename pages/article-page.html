@@ -77,41 +77,11 @@
                 this.article = data.detail.response;
                 if(this.article) {
                     this.$.image.style.backgroundImage = "url('"+ this.article.image +"')";
-                    this.$.content.innerHTML = this.getContent(this.article.content);
+                    this.$.content.innerHTML = this.article.html;
                 } else {
                     //document.querySelector('app-router').go('/home');
                 }
                 
-            },
-            getContent: function(contents) {
-                var content = "";
-                for(var i=0; i<contents.length; i++) {
-                    switch(contents[i].type) {
-                        case 'p':
-                            content += "<p>" + contents[i].text + "</p>";
-                        break;
-                        
-                        case 'a':
-                        break;
-                        
-                        case 'heading':
-                            content += "<h2 class='section-heading'>" + contents[i].text + "</h2>";
-                        break;
-                        
-                        case 'img':
-                            content += "<img class='img-responsive' src='" + contents[i].src + "' alt='" + contents[i].alt + "'>";
-                        break;
-                        
-                        case 'blockquote':
-                            content += "<blockquote>" +  contents[i].text + "</blockquote>";
-                        break;
-                        
-                        default:
-                        break;                        
-                    }
-                }
-                
-                return content;
             },
             attached: function() {
                 window.scrollTo(0, 0);
