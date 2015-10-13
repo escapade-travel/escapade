@@ -100,9 +100,12 @@
             handleResponse: function(data) {
                 this.slides = data.detail.response.result;
                 
-                var element = document.createElement("slider-element");
-                element.slides = this.slides;
-                this.$.slider.appendChild(element);
+                this.async(function() {
+                    var element = document.createElement("slider-element");
+                    element.slides = this.slides;
+                    
+                    this.$.slider.appendChild(element);
+                });
             },
             attached: function() {
                 document.querySelector('.index-page').style.height = window.innerHeight-60 + 'px';
