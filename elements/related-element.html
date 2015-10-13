@@ -1,6 +1,15 @@
 <dom-module id="related-element">
 <template>
 
+
+        <iron-ajax id="getdata"
+                auto
+                url="/data/articles.json"
+                method="GET"
+                handle-as="json"
+                on-response="handleResponse"
+                debounce-duration="300"></iron-ajax>
+                
             <div class="index-heading">
                 <h2>相关阅读</h2>
             </div>
@@ -30,6 +39,9 @@
                 type: Array
             }
         },
+            handleResponse: function(data) {
+                this.articles = data.detail.response.result;
+            },
         getHref: function(id) {
             if(id) {
                 return "#/themes/" + id;
