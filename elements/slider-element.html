@@ -38,6 +38,7 @@
             attached: function() {
                 this.async(function() {
                     var slider = new Slider('index-slider');
+                    slider.start();
                     this.querySelector('.slide').style.display = "block";
                 });
             }

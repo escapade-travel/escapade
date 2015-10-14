@@ -199,6 +199,12 @@ section {
 	font-size: 2.5em;
 }
 
+.slide {
+    transition: all .25s ease-in-out;
+   -moz-transition: all .25s ease-in-out;
+   -webkit-transition: all .25s ease-in-out;
+}
+
 img {
     transition: all 0.5s;
     margin: 0 auto;

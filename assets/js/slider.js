@@ -3,14 +3,15 @@ var Slider = function(id) {
 	var slider = document.getElementById(id);
 	var allSlides = slider.querySelectorAll('.slide');
 	var number = allSlides.length;
+    var timer;
     init();
 	
 	function showSlide(currentIndex) {
 		for(var i=0; i<number; i++) {
 			if(i != currentIndex) {
-				allSlides[i].style.display = "none";
+                allSlides[i].style.display = "none";
 			} else {
-				allSlides[i].style.display = "block";
+                allSlides[i].style.display = "block";
 			}
 			
 		}
@@ -29,10 +30,18 @@ var Slider = function(id) {
     
     function init() {
         var prev = slider.querySelector('.prev');
-			var next = slider.querySelector('.next');
-			
-			prev.addEventListener('click', showPrev);
-			next.addEventListener('click', showNext);
+        var next = slider.querySelector('.next');	
+        prev.addEventListener('click', showPrev);
+        next.addEventListener('click', showNext);
+    }
+    
+    return {
+        start: function() {
+            timer = setInterval(showNext, 2500);
+        },
+        stop: function() {
+            clearInterval(timer);
+        }
     }
 }
 
