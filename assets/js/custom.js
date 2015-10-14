@@ -48,10 +48,9 @@ var FormEffect = function(){
     function closeAllSelection(event) {
 		var popups = document.querySelectorAll('.selection');
 		
-		//console.log(event.target);
-		
         for(var i=0; i<popups.length; i++) {
-			if(!event.target.classList.contains('selection')) {
+            var element = event.target || window.event.srcElement;
+			if(!element.classList.contains('selection')) {
 				popups[i].style.display = "none";
 			}
 			
@@ -59,7 +58,8 @@ var FormEffect = function(){
     }
 
     function toggleClickToSelect(event) {
-        var selection = event.target.getAttribute('data-toggle');
+        var element = event.target || window.event.srcElement;
+        var selection = element.getAttribute('data-toggle');
 		//closeAllSelection(event);
 		
 		if(document.getElementById(selection).style.display == "block") {
@@ -70,7 +70,7 @@ var FormEffect = function(){
     }
 
     function toggleSelection(event) {
-        var button = event.target;
+        var button = event.target || window.event.srcElement;
 		var group = button.getAttribute('data-item');
 		var parent = button.parentNode;
 		var parentGroup = parent.getAttribute('data-group');
@@ -94,7 +94,8 @@ var FormEffect = function(){
     }
 
     function closeSelection(event) {
-        event.target.parentNode.style.display = "none";
+        var element = event.target || window.event.srcElement;
+        element.parentNode.style.display = "none";
     }
 
     return {
