@@ -211,7 +211,7 @@ img {
     -webkit-transition: all 0.5s;
     margin: 0 auto;
 }
-	.slide img:hover, .card a:hover img {
+	.slide img:hover, .card a:hover .bg {
 		-webkit-transform: scale(1.05);
 		transform: scale(1.05);
 		transition: all 0.5s;
