@@ -592,32 +592,49 @@ form .row:first-child .floating-label-form-group {
 /**/
 .card {
   margin-top: 20px;
+  overflow: hidden;
+  position: relative;
 
-  .thumbnail {
-    padding: 0;
+  .bg {
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.35s ease 0s;
     position: relative;
-    @media only screen and (min-width: 768px) {
-      height: 250px;
-      overflow: hidden;
+    
+    
+    &::before {
+        background-color: rgba(45, 45, 45, 0.35);
+        content: " ";
+        display: block;
+        height: 100%;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        transition: opacity 0.35s ease 0s;
+        width: 100%;
+        z-index: 1;
     }
-
-
+    
+    
+    &::after {
+        background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 60%, rgba(31, 31, 31, 0.7) 100%) repeat scroll 0 0;
+        content: " ";
+        display: block;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+    }
+    
     img {
-      width: 100%;
-      cursor: pointer;
-      height: 100%;
-      @media only screen and (max-width: 767px) {
-        height: auto;
-      }
-    }
-
-    hr {
-      margin: 0;
+        width: 100%;
+        height: 100%;
     }
   }
 
   .caption {
-    color: @gray;
+    color: #fff;
     position: absolute;
     left: 0;
     bottom: 0;
@@ -625,30 +642,31 @@ form .row:first-child .floating-label-form-group {
     overflow: hidden;
     text-align: left;
     font-size: 14px;
-    padding: 15px;
+    padding: 15px 30px;
     border-radius: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 2;
+    background-color: rgba(0,0,0,0);
 
+    /*
     @media only screen and (max-width: 640px) {
       position: relative;
       background-color: #fff;
+      border-left: 1px solid @gray;
+      border-right: 1px solid @gray;
+      border-bottom: 1px solid @gray;
     }
+    */
 
     h3 {
       font-size: 16px;
       margin: 0;
       padding: 0;
-      @media only screen and (max-width: 640px) {
-        font-size: 14px;
-      }
     }
 
     p {
       margin: 15px 0 0 0;
-      @media only screen and (max-width: 640px) {
-        font-size: 14px;
-      }
+      font-size: 14px;
     }
   }
 
@@ -658,10 +676,10 @@ form .row:first-child .floating-label-form-group {
     &:active,
     &.active {
       text-decoration: none;
-      color: @gray-dark;
+      color: #fff;
       h3,
       p {
-        color: @gray-dark;
+        color: #fff;
       }
     }
   }
@@ -674,8 +692,12 @@ form .row:first-child .floating-label-form-group {
   .slide {
     display: none;
     &.card {
-      .thumbnail {
+      .bg {
         height: auto;
+      }
+      
+      .caption {
+        padding: 15px;
       }
     }
   }

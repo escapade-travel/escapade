@@ -186,23 +186,6 @@ section {
     display: inline-block;
 }
 
-/* Cards */
-@media only screen and (min-width: 641px) {
-    .card .caption {
-        background-color: rgba(0,0,0,0);
-        color: #fff;
-    }
-    .card a:hover h3, .card a:hover p {
-        color: #fff;
-    }
-    /*
-    .card a:hover .caption {
-        background-color: rgba(255, 255, 255, 0.7);
-        color: #808080;
-    }
-    */
-}
-
 /*Sliders*/
 .sliders .prev:before {
 	content: '\e801';
@@ -228,14 +211,11 @@ img {
     -webkit-transition: all 0.5s;
     margin: 0 auto;
 }
-
-@media only screen and (min-width: 767px) {
-	.slide img:hover, .card .thumbnail:hover img {
+	.slide img:hover, .card a:hover img {
 		-webkit-transform: scale(1.05);
 		transform: scale(1.05);
 		transition: all 0.5s;
 	}
-}
 
 /*
 .sliders {

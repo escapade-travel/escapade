@@ -528,32 +528,43 @@ form .row:first-child .floating-label-form-group {
 /**/
 .card {
   margin-top: 20px;
-}
-.card .thumbnail {
-  padding: 0;
+  overflow: hidden;
   position: relative;
 }
-@media only screen and (min-width: 768px) {
-  .card .thumbnail {
-    height: 250px;
-    overflow: hidden;
-  }
-}
-.card .thumbnail img {
+.card .bg {
   width: 100%;
   cursor: pointer;
+  transition: all 0.35s ease 0s;
+  position: relative;
+}
+.card .bg::before {
+  background-color: rgba(45, 45, 45, 0.35);
+  content: " ";
+  display: block;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  transition: opacity 0.35s ease 0s;
+  width: 100%;
+  z-index: 1;
+}
+.card .bg::after {
+  background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 0) 60%, rgba(31, 31, 31, 0.7) 100%) repeat scroll 0 0;
+  content: " ";
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+.card .bg img {
+  width: 100%;
   height: 100%;
 }
-@media only screen and (max-width: 767px) {
-  .card .thumbnail img {
-    height: auto;
-  }
-}
-.card .thumbnail hr {
-  margin: 0;
-}
 .card .caption {
-  color: #808080;
+  color: #fff;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -561,41 +572,36 @@ form .row:first-child .floating-label-form-group {
   overflow: hidden;
   text-align: left;
   font-size: 14px;
-  padding: 15px;
+  padding: 15px 30px;
   border-radius: 0;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
-}
-@media only screen and (max-width: 640px) {
-  .card .caption {
-    position: relative;
-    background-color: #fff;
-  }
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0);
+  /*
+    @media only screen and (max-width: 640px) {
+      position: relative;
+      background-color: #fff;
+      border-left: 1px solid @gray;
+      border-right: 1px solid @gray;
+      border-bottom: 1px solid @gray;
+    }
+    */
 }
 .card .caption h3 {
   font-size: 16px;
   margin: 0;
   padding: 0;
 }
-@media only screen and (max-width: 640px) {
-  .card .caption h3 {
-    font-size: 14px;
-  }
-}
 .card .caption p {
   margin: 15px 0 0 0;
-}
-@media only screen and (max-width: 640px) {
-  .card .caption p {
-    font-size: 14px;
-  }
+  font-size: 14px;
 }
 .card a:hover,
 .card a:focus,
 .card a:active,
 .card a.active {
   text-decoration: none;
-  color: #404040;
+  color: #fff;
 }
 .card a:hover h3,
 .card a:focus h3,
@@ -605,7 +611,7 @@ form .row:first-child .floating-label-form-group {
 .card a:focus p,
 .card a:active p,
 .card a.active p {
-  color: #404040;
+  color: #fff;
 }
 .sliders {
   position: relative;
@@ -613,8 +619,11 @@ form .row:first-child .floating-label-form-group {
 .sliders .slide {
   display: none;
 }
-.sliders .slide.card .thumbnail {
+.sliders .slide.card .bg {
   height: auto;
+}
+.sliders .slide.card .caption {
+  padding: 15px;
 }
 .sliders .prev,
 .sliders .next {
