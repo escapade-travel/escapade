@@ -29,8 +29,15 @@
     <div class="container">
         <div class="row">
             <div class="index-heading col-lg-8 col-lg-offset-2 col-xs-10 col-xs-offset-1">
-                <h3>旅行必须流浪式，否则便不成其为旅行。</h3>
+                <h3>从以下标签中选择</h3>
                 <hr>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="post-tags">
+            <template is="dom-repeat" items="{{tags}}">
+                <span on-click="toggleTag" class="btn btn-info">{{item}}</span>
+            </template>
             </div>
         </div>
     </div>
@@ -38,7 +45,7 @@
     <!-- Main Content -->
     <section class="container">
         <div class="row">
-            <template is="dom-repeat" items="{{articles}}">
+            <template id="articleList" is="dom-repeat" items="{{articles}}" filter="_filterByTag">
             <div class="card col-sm-6 col-lg-4">
                 <a href$="{{getHref(item.id)}}">
                     <div class="thumbnail">
@@ -72,9 +79,42 @@
         Polymer({
             is: "article-list-page",
             properties: {
+                tags: {
+                    type: Array,
+                    value: ['艺术', '历史', '文化', '电影', '足球', '苏格兰', '世界遗产', '风景', '徒步', '皇室', '露营', '下午茶']
+                },
+                selectedTags: {
+                    type: Array,
+                    value: []
+                }
             },
             handleResponse: function(data) {
                 this.articles = data.detail.response.result;
+                var allTags = [];
+                
+                _.each(data.detail.response.result, function(element) {
+                    allTags = _.union(allTags, element.tags);
+                });
+                
+                this.tags = allTags;
+            },
+            toggleTag: function(e, detail) {
+                var tag = e.target;
+                var name = tag.innerHTML;
+                if(name) {
+                    if(this.selectedTags.indexOf(name) == -1) {
+                        this.selectedTags.push(name);
+                        tag.classList.add('selected');
+                    } else {
+                        this.selectedTags.splice( this.selectedTags.indexOf(name) , 1);
+                        tag.classList.remove('selected');
+                    }
+                    
+                    this.$.articleList.render();
+                }
+            },
+            _filterByTag: function(item) {
+                return _.intersection(this.selectedTags, item.tags).length == this.selectedTags.length;
             },
             getHref: function(id) {
                 return "#/themes/" + id;
