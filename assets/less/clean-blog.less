@@ -515,7 +515,12 @@ form .row:first-child .floating-label-form-group {
     }
   }
 
-  &:hover,
+  &:hover {
+    background-color: transparent;
+    border: 1px solid @brand-primary;
+    color: @brand-primary;
+  }
+  
   &:focus,
   &:active,
   &.active {
@@ -534,9 +539,20 @@ form .row:first-child .floating-label-form-group {
     background-color: @brand-info;
     border: 1px solid @brand-info;
     color: white;
+    
+    &:hover {
+        background-color: darken(@brand-info, 6.5%);
+        border: 1px solid @brand-info;
+        color: white;
+    }
   }
 
-  &:hover,
+  &:hover {
+    background-color: transparent;
+    border: 1px solid @brand-info;
+    color: @brand-info;
+  }
+  
   &.active,
   &:focus,
   &:active {

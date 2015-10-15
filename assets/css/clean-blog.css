@@ -470,7 +470,11 @@ form .row:first-child .floating-label-form-group {
   border: 1px solid #e7746f;
   color: white;
 }
-.btn-primary:hover,
+.btn-primary:hover {
+  background-color: transparent;
+  border: 1px solid #e7746f;
+  color: #e7746f;
+}
 .btn-primary:focus,
 .btn-primary:active,
 .btn-primary.active {
@@ -488,7 +492,16 @@ form .row:first-child .floating-label-form-group {
   border: 1px solid #5dcfca;
   color: white;
 }
-.btn-info:hover,
+.btn-info.selected:hover {
+  background-color: #43c7c2;
+  border: 1px solid #5dcfca;
+  color: white;
+}
+.btn-info:hover {
+  background-color: transparent;
+  border: 1px solid #5dcfca;
+  color: #5dcfca;
+}
 .btn-info.active,
 .btn-info:focus,
 .btn-info:active {
