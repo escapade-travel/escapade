@@ -16,11 +16,14 @@ Add below to the end of 'result' in articles.json (Replace 'id' with the latest 
 
 It's better to make sure there is a high-resolution version image (1600px width) as well as a thumbnail (748px * 451px). This will reduce the loading time on some pages.
 
+Name the new images in the same format as the example.
+
 Then create a new article5.json file in data folder, so that a detail page is created for this article.
  
 Article Json file format example:
 
 {
+
     "id": 5,
     
     "image": "/assets/img/article5_full.jpg",
