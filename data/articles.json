@@ -2,42 +2,36 @@
     "result": [
         {
             "id": 1,
-            "image": "/assets/img/article1_full.jpg",
             "thumbnail": "/assets/img/article1_small.jpg",
             "title": "游览《唐顿庄园》中的乡村! ",
             "description": "如果您是《唐顿庄园》迷，那么来看看这部连续剧的拍摄地吧！ "
         },
         {
             "id": 2,
-            "image": "/assets/img/article2_full.jpg",
             "thumbnail": "/assets/img/article2_small.jpg",
             "title": "有故事的教堂 ",
             "description": "英国教堂探秘 "
         },
         {
             "id": 3,
-            "image": "/assets/img/article3_full.jpg",
             "thumbnail": "/assets/img/article3_small.jpg",
             "title": "冬日旅游创意 ",
             "description": "在英国最温馨的旅游景点尽享冬日里的温暖"
         },
         {
             "id": 4,
-            "image": "/assets/img/article4_full.jpg",
             "thumbnail": "/assets/img/article4_small.jpg",
             "title": "英国城堡",
             "description": "令人瞩目的位置，丰富的历史掌故 "
         },
         {
             "id": 5,
-            "image": "/assets/img/article5_full.jpg",
             "thumbnail": "/assets/img/article5_small.jpg",
             "title": "电影中的英国",
             "description": "英国是一处宏大而优美的电影取景地。 "
         },
         {
             "id": 6,
-            "image": "/assets/img/article6_full.jpg",
             "thumbnail": "/assets/img/article6_small.jpg",
             "title": "莎士比亚的英格兰",
             "description": "走近大师"
