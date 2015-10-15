@@ -187,19 +187,21 @@ section {
 }
 
 /* Cards */
-.card .caption {
-    background-color: rgba(0,0,0,0);
-    color: #fff;
+@media only screen and (min-width: 641px) {
+    .card .caption {
+        background-color: rgba(0,0,0,0);
+        color: #fff;
+    }
+    .card a:hover h3, .card a:hover p {
+        color: #fff;
+    }
+    /*
+    .card a:hover .caption {
+        background-color: rgba(255, 255, 255, 0.7);
+        color: #808080;
+    }
+    */
 }
-.card a:hover h3, .card a:hover p {
-    color: #fff;
-}
-/*
-.card a:hover .caption {
-    background-color: rgba(255, 255, 255, 0.7);
-    color: #808080;
-}
-*/
 
 /*Sliders*/
 .sliders .prev:before {
