@@ -211,12 +211,14 @@ img {
     -webkit-transition: all 0.5s;
     margin: 0 auto;
 }
+
+@media only screen and (min-width: 769px) {
 	.slide img:hover, .card a:hover .bg {
 		-webkit-transform: scale(1.05);
 		transform: scale(1.05);
 		transition: all 0.5s;
 	}
-
+}
 /*
 .sliders {
     -webkit-box-sizing: border-box;
