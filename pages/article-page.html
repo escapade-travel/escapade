@@ -8,7 +8,7 @@
                 on-error="handleError"
                 debounce-duration="300"></iron-ajax>
                 
-<div on-track="handleTrack">
+<div id="article">
     <!-- Navigation -->
     <nav-element></nav-element>
     
@@ -79,29 +79,37 @@
     <script>
         Polymer({
             is: "article-page",
+            listeners: {
+                'article.track': 'handleTrack'
+            },
             properties: {
                 id: {
                     type: String
                     //observer: '_updateArticle'
                 },
-                trackStart: {
+                trackStartX: {
+                    type: Number
+                },
+                trackStartY: {
                     type: Number
                 }
             },
             handleTrack: function(e) {
                 switch(e.detail.state) {
                   case 'start':
-                    this.trackStart = e.detail.x;
-                    break;
-                  case 'track':
+                    this.trackStartX = e.detail.x;
+                    this.trackStartY = e.detail.y;
                     break;
                   case 'end':
-                    if(e.detail.x < this.trackStart) {
+                    if( (this.trackStartX - e.detail.x) >= window.innerWidth/4) {
                         this._getNextArticle();
                     } else {
+                        this.setScrollDirection('y', this);
                     }
                     break;
                 }
+                
+                        this.setScrollDirection('y', this);
             },
             _updateArticle: function() {
                 this.$.getarticle.url = "/data/article" + this.id + ".json";
