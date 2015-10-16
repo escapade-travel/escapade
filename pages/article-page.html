@@ -5,6 +5,7 @@
                 method="GET"
                 handle-as="json"
                 on-response="handleResponse"
+                on-error="handleError"
                 debounce-duration="300"></iron-ajax>
                 
     <!-- Navigation -->
@@ -38,11 +39,12 @@
                         <a href="#/booking" class="btn btn-lg btn-primary selected fullwidth">立即预订</a>
                     </div>
                 </div>
-            </div>
+            </div>            
         </div>
         <hr>
     </div>
 </article>
+
 <section class="container">
     <div class="no-padding col-md-12">
         <div class="row">
@@ -62,6 +64,12 @@
     </div>
 </section>
 
+
+
+        <div class="float">
+            <span on-click="_getNextArticle" class="btn btn-info selected">下一篇</span>
+        </div
+        
 <!-- Footer -->
     <footer-element></footer-element>
     </template>
@@ -70,8 +78,21 @@
             is: "article-page",
             properties: {
                 id: {
-                    type: String
+                    type: String,
+                    observer: '_updateArticle'
                 }
+            },
+            _updateArticle: function() {
+                this.$.getarticle.url = "/data/article" + this.id + ".json";
+                this.$.getarticle.generateRequest();
+            },
+            _getNextArticle: function() {
+                document.querySelector('app-router').go('/themes/' + (parseInt(this.id) + 1));
+                //this.id = parseInt(this.id) + 1;
+            },
+            handleError: function(err) {
+                //this.id = 1;
+                document.querySelector('app-router').go('/themes/1');
             },
             handleResponse: function(data) {
                 this.article = data.detail.response;
@@ -79,9 +100,9 @@
                     this.$.image.style.backgroundImage = "url('"+ this.article.image +"')";
                     this.$.content.innerHTML = this.article.html;
                 } else {
-                    //document.querySelector('app-router').go('/home');
+                    //this.id = 1;
+                    document.querySelector('app-router').go('/themes/1');
                 }
-                
             },
             attached: function() {
                 window.scrollTo(0, 0);

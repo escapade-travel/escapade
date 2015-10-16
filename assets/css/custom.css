@@ -390,12 +390,16 @@ img {
  * Scroll to top
 /* ---------------------------------------------- */
 
-.scroll-up {
+.float {
 	position: fixed;
 	z-index: 999;
 	bottom: 2em;
 	right: 2em;
 	cursor: pointer;
+}
+
+.float.left {
+    left: 2em;
 }
 
 .start-button {
@@ -406,7 +410,7 @@ img {
     transform: translateX(-50%);
 }
 
-.scroll-up a {
+.float a.scroll-up {
 	background-color: rgba(135, 135, 135, 0.5);
 	display: block;
 	width: 35px;
@@ -424,7 +428,7 @@ img {
     font-size: 36px;
 }
 
-.scroll-up a:before {
+.float a.scroll-up:before {
     content: '\e803';
     font-family:'Fontello';
 }
@@ -434,8 +438,8 @@ img {
     font-family:'Fontello';
 }
 
-.scroll-up a:hover,
-.scroll-up a:focus{
+.float a.scroll-up:hover,
+.float a.scroll-up:focus{
 	background-color: rgba(235, 235, 235, .8);
 	color: #333;
 }
