@@ -98,18 +98,15 @@
                 switch(e.detail.state) {
                   case 'start':
                     this.trackStartX = e.detail.x;
-                    this.trackStartY = e.detail.y;
+                    break;
+                  case 'track':
                     break;
                   case 'end':
                     if( (this.trackStartX - e.detail.x) >= window.innerWidth/4) {
                         this._getNextArticle();
-                    } else {
-                        this.setScrollDirection('y', this);
                     }
                     break;
                 }
-                
-                        this.setScrollDirection('y', this);
             },
             _updateArticle: function() {
                 this.$.getarticle.url = "/data/article" + this.id + ".json";
