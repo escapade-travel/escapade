@@ -8,6 +8,7 @@
                 on-error="handleError"
                 debounce-duration="300"></iron-ajax>
                 
+<div on-track="handleTrack">
     <!-- Navigation -->
     <nav-element></nav-element>
     
@@ -38,6 +39,11 @@
                     <div id="book-now" class="">
                         <a href="#/booking" class="btn btn-lg btn-primary selected fullwidth">立即预订</a>
                     </div>
+                    
+                    <div id="next" class="float">
+                        <span on-click="_getNextArticle" class="btn btn-lg btn-info selected">下一篇</span>
+                    </div>
+                    
                 </div>
             </div>            
         </div>
@@ -45,10 +51,11 @@
     </div>
 </article>
 
+<!-- Related reading 
 <section class="container">
     <div class="no-padding col-md-12">
         <div class="row">
-            <!-- Related reading -->
+            
             <related-element article-id="{{article.id}}"></related-element>
         </div>
     </div>
@@ -63,23 +70,37 @@
         </div>
     </div>
 </section>
+-->
 
-
-
-        <div class="float">
-            <span on-click="_getNextArticle" class="btn btn-info selected">下一篇</span>
-        </div
-        
 <!-- Footer -->
     <footer-element></footer-element>
+    </div>
     </template>
     <script>
         Polymer({
             is: "article-page",
             properties: {
                 id: {
-                    type: String,
-                    observer: '_updateArticle'
+                    type: String
+                    //observer: '_updateArticle'
+                },
+                trackStart: {
+                    type: Number
+                }
+            },
+            handleTrack: function(e) {
+                switch(e.detail.state) {
+                  case 'start':
+                    this.trackStart = e.detail.x;
+                    break;
+                  case 'track':
+                    break;
+                  case 'end':
+                    if(e.detail.x < this.trackStart) {
+                        this._getNextArticle();
+                    } else {
+                    }
+                    break;
                 }
             },
             _updateArticle: function() {

@@ -370,31 +370,33 @@ img {
 	clear: right;
 }
 
-/**/
-.fixed-book {
-	position: fixed;
-	z-index: 999;
-	bottom: 2em;
-	left: 50%;
-	transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
+/* ---------------------------------------------- /*
+ * Float icons
+/* ---------------------------------------------- */
+
+@media only screen and (max-width: 480px) {
+    #book-now {
+        position: fixed;
+        z-index: 999;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+    
+    #next {
+        display: none;
+    }
 }
 
 .fullwidth {
     width: 100%;
 }
 
-
-
-/* ---------------------------------------------- /*
- * Scroll to top
-/* ---------------------------------------------- */
-
 .float {
 	position: fixed;
 	z-index: 999;
 	bottom: 2em;
-	right: 2em;
+	right: 0;
 	cursor: pointer;
 }
 
